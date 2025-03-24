@@ -7,9 +7,12 @@ const HeroSection = () => {
     <HeroContainer>
         <Content>
             <Title>
-            <h1>Adventure Awaits</h1>
-            <p>What are you waiting for?</p>
+            <h1>TrailBlazer Gear</h1>
             </Title>
+            <Phrase>
+            <p>Get Ready for Your Next Adventure</p>
+            </Phrase>
+
         </Content>
     </HeroContainer>
   );
@@ -60,5 +63,13 @@ const Title = styled.h1`
  right:90%;
 
 `;
-
+const Phrase = styled.p`
+  color: #fff;
+  font-size: 20px;
+   top: 190px;
+  position: absolute;
+  left: -10%;
+  font: 20px 'Roboto', sans-serif;
+  font-weight: 300;
+`;
 export default HeroSection;
