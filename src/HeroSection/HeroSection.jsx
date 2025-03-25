@@ -12,14 +12,18 @@ const HeroSection = () => {
             <Phrase>
             <p>Get Ready for Your Next Adventure</p>
             </Phrase>
-
+            <Subtitle>
+             <p>"TrailBlazer Gear fuels your outdoor adventures with high-quality,<br/>
+                 reliable camping and outdoor equipment designed for explorers who crave
+                  the wild."</p>
+            </Subtitle>
         </Content>
     </HeroContainer>
   );
 };
 
 const HeroContainer = styled.div`
-  background-image: url('/camp2.jpg');
+  background-image: url('/camping.jpg');
   background-size: cover;
   position: absolute;
   transform: translate(-50%, -50%);
@@ -37,7 +41,7 @@ const HeroContainer = styled.div`
     left: 0;
     width: 600px; /* Adjust the width as needed */
     height: 100%;
-    background: rgba(152, 142, 142, 0.5); /* Adjust the color and opacity as needed */
+    background: rgba(32, 29, 29, 0.5); /* Adjust the color and opacity as needed */
     z-index: 1;
   }
 `;
@@ -72,4 +76,13 @@ const Phrase = styled.p`
   font: 20px 'Roboto', sans-serif;
   font-weight: 300;
 `;
+const Subtitle = styled.p`
+  color: #fff;
+  font-size: 10px;
+  top: 250px;
+  position: absolute;
+  left: -35%;
+  font: 15px 'Roboto', sans-serif;
+  font-weight: 300;
+`;  
 export default HeroSection;
