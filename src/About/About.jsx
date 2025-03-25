@@ -28,8 +28,9 @@ const AboutContainer = styled.div`
     position: absolute;
     color: white;
     transform: translate();
-    min-width: 100%;
-    min-height: 100%;
+   
+    width: 100vw;
+  height: 100vh;
 `;
 
 const Header = styled.h1`
@@ -50,7 +51,7 @@ const Description = styled.p`
 
 const Image = styled.img`
     position: absolute;
-    width: 30%;
+    width: 31%;
     height: 100%;
     top: 0;
     left: 880px;

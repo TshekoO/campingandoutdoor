@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
@@ -8,10 +8,10 @@ const HeroSection = () => {
   return (
     <HeroContainer>
       <Navbar>
-        <NavItem href="/">Home</NavItem>
-        <NavItem href="/about">About Us</NavItem>
-        <NavItem href="/equipment">Equipment</NavItem>
-        <NavItem href="/contact">Contact</NavItem>
+        <NavItem to="/">Home</NavItem>
+        <NavItem to="./About/About">About Us</NavItem>
+        <NavItem to="/equipment">Equipment</NavItem>
+        <NavItem to="/contact">Contact</NavItem>
         <CartIcon icon={faCartPlus} />
       </Navbar>
       <Content>
@@ -66,7 +66,7 @@ const Navbar = styled.nav`
   z-index: 1;
 `;
 
-const NavItem = styled.a`
+const NavItem = styled(Link)`
   color: white;
   text-decoration: none;
   font-size: 18px;
