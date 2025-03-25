@@ -1,22 +1,18 @@
-// import { useState } from 'react';
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
 import './App.css';
-import {BrowserRouter as Router, Route, } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Navbar from './Navbar/Navbar';
-import HeroSection from './HeroSection/HeroSection'
+import HeroSection from './HeroSection/HeroSection';
+import About from './About/About';
 
 function App() {
-  // const [count, setCount] = useState(0)
-
   return (
     <Router>
       <div className="app">
-    
-        <HeroSection/>
+        <HeroSection />
+        <About/>
       </div>
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;

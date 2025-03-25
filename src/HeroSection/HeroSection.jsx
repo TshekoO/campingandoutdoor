@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
@@ -15,16 +15,12 @@ const HeroSection = () => {
         <CartIcon icon={faCartPlus} />
       </Navbar>
       <Content>
-        <Title>
-          <h1>TrailBlazer Gear</h1>
-        </Title>
-        <Phrase>
-          <p>Get Ready for Your Next Adventure</p>
-        </Phrase>
+        <Title>TrailBlazer Gear</Title>
+        <Phrase>Get Ready for Your Next Adventure</Phrase>
         <Subtitle>
-          <p>"TrailBlazer Gear fuels your outdoor adventures with high-quality,<br/>
-            reliable camping and outdoor equipment designed for explorers who crave
-            the wild."</p>
+          "TrailBlazer Gear fuels your outdoor adventures with high-quality,
+          reliable camping and outdoor equipment designed for explorers who crave
+          the wild."
         </Subtitle>
       </Content>
     </HeroContainer>
@@ -34,38 +30,40 @@ const HeroSection = () => {
 const HeroContainer = styled.div`
   background-image: url('/camping.jpg');
   background-size: cover;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  object-fit: cover;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
   z-index: 0;
-  
+
   &::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
-    width: 600px; /* Adjust the width as needed */
+    width: 600px;
     height: 100%;
-    background: rgba(32, 29, 29, 0.5); /* Adjust the color and opacity as needed */
+    background: rgba(43, 41, 41, 0.5);
     z-index: 1;
   }
 `;
 
 const Navbar = styled.nav`
   display: flex;
-  justify-content: flex-start; /* Align items to the left */
-  gap: 50px; /* Adjust the gap between items as needed */
+  justify-content: flex-start;
+  gap: 50px;
   align-items: center;
   background: rgba(0, 0, 0, 0.7);
-  padding: 10px 20px;
+  padding: 10px 10px;
   position: absolute;
   top: 0;
-  width: 100%;
-  z-index: 2;
+  width: 98%;
+  z-index: 1;
 `;
 
 const NavItem = styled.a`
@@ -91,7 +89,7 @@ const NavItem = styled.a`
 `;
 
 const CartIcon = styled(FontAwesomeIcon)`
-  margin-left: 700px;
+  margin-left: 600px;
   color: white;
   font-size: 24px;
   cursor: pointer;
@@ -102,43 +100,26 @@ const CartIcon = styled(FontAwesomeIcon)`
 `;
 
 const Content = styled.div`
-  text-align: center;
-  color: white;
+  z-index: 2;
+  position: relative;
   max-width: 800px;
   width: 100%;
-  margin: 0 auto;
-  z-index: 2; /* Ensure content is above overlay */
-  position: relative;
+  align-self: left;
 `;
 
 const Title = styled.h1`
-  color: #fff;
-  font-size: 24px;
-  text-align: left;
+  font-size: 48px;
   margin-bottom: 20px;
-  position: absolute;
-  top: 50%; 
-  right: 90%;
 `;
 
 const Phrase = styled.p`
-  color: #fff;
-  font-size: 20px;
-  top: 190px;
-  position: absolute;
-  left: -10%;
-  font: 20px 'Roboto', sans-serif;
-  font-weight: 300;
+  font-size: 24px;
+  margin-bottom: 20px;
 `;
 
 const Subtitle = styled.p`
-  color: #fff;
-  font-size: 10px;
-  top: 250px;
-  position: absolute;
-  left: -35%;
-  font: 15px 'Roboto', sans-serif;
-  font-weight: 300;
+  font-size: 18px;
 `;
 
 export default HeroSection;
+
