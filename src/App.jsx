@@ -8,11 +8,11 @@ import Equipment from './Equipment/Equipment';
 function App() {
   return (
     <Router>
-      <div className="app">
+     
         <HeroSection />
         <About/>
         <Equipment/>
-      </div>
+     
     </Router>
   );
 }
