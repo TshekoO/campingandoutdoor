@@ -101,7 +101,9 @@ const Equipment = () => {
     : equipmentData.filter(item => item.category === selectedCategory);
 
   return (
+    
     <EquipmentContainer>
+        
       <Sidebar>
         <h2>Categories</h2>
         {categories.map(category => (
@@ -110,6 +112,7 @@ const Equipment = () => {
           </CategoryButton>
         ))}
       </Sidebar>
+      <h1>Stock Available Now</h1>
       <EquipmentList>
         {filteredEquipment.map(item => (
           <EquipmentItem key={item.id}>
@@ -117,6 +120,7 @@ const Equipment = () => {
             <EquipmentImage src={item.image} alt={item.name} />
             <p>{item.description}</p>
             <p><strong>{item.price}</strong></p>
+         
             <AddToCartButton onClick={() => alert(`${item.name} added to cart!`)}>Add to Cart</AddToCartButton>
           </EquipmentItem>
         ))}
