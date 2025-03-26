@@ -11,7 +11,7 @@ const Navbar = () => {
             <NavbarWrapper>
                 <NavMenu>
                     <NavItem>
-                        <NavLink to='/'>Home</NavLink>  
+                        <NavLink to='/home'>Home</NavLink>  
                         <NavLink to='/'>About</NavLink> 
                         <NavLink to='/'>Equipment</NavLink> 
                         <NavLink to='/'>Contact</NavLink> 

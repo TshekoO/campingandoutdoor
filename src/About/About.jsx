@@ -25,12 +25,10 @@ const About = () => {
 const AboutContainer = styled.div`
     background-color: black;
     background-size: cover;
-    position: absolute;
+    position: relative;
     color: white;
-    transform: translate();
-   
     width: 100vw;
-  height: 100vh;
+    height: 100vh;
 `;
 
 const Header = styled.h1`
@@ -51,7 +49,7 @@ const Description = styled.p`
 
 const Image = styled.img`
     position: absolute;
-    width: 31%;
+    width: 30%;
     height: 100%;
     top: 0;
     left: 880px;

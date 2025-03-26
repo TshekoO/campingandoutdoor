@@ -6,6 +6,7 @@ import hikingImg from '/hiking.jpg';
 import tentImg from '/tool.jpg';
 
 const EquipmentContainer = styled.div`
+ position: relative;
   display: flex;
   background-color: black;
   color: white;
