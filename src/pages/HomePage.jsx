@@ -6,6 +6,7 @@ import Footer from '../Footer/Footer';
 
 function HomePage() {
     return(
+         
         <div>
         <HeroSection/>
         <About/>
