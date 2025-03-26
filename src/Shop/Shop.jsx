@@ -6,7 +6,7 @@ const Shop = () => {
     const navigate = useNavigate();
 
     const handleShopNow = () => {
-        navigate('/shop');
+        navigate('/equipment');
     };
 
     return (
@@ -20,7 +20,7 @@ const Shop = () => {
 };
 
 const ShopContainer = styled.div`
-    background: radial-gradient(circle at center, rgba(209, 123, 18, 0.9) 30%, rgba(0, 0, 0, 0.85) 50%);
+    background: radial-gradient(circle at bottom right, rgba(200, 101, 14, 0.95) 20%, rgba(243, 134, 0, 0.75) 20%, rgba(0, 0, 0, 0.85) 70%);
     background-size: cover;
     position: relative;
     color: white;
@@ -51,14 +51,14 @@ const ShopButton = styled.button`
     padding: 10px 20px;
     font-size: 1.2em;
     color: white;
-    background-color: rgba(255, 153, 0, 0.8); /* Adjusted alpha value for transparency */
+    background-color: rgba(0, 0, 0, 0.8); /* Adjusted alpha value for transparency */
     border: none;
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s;
 
     &:hover {
-        background-color: rgba(255, 102, 0, 0.8); /* Adjusted alpha value for transparency */
+        background-color: rgba(222, 136, 15, 0.8); /* Adjusted alpha value for transparency */
     }
 `;
 

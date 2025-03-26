@@ -6,7 +6,8 @@ import hikingImg from '/hiking.jpg';
 import tentImg from '/tool.jpg';
 
 const EquipmentContainer = styled.div`
- position: relative;
+   background-size: cover;
+   position: relative;
   display: flex;
   background-color: black;
   color: white;
@@ -14,7 +15,7 @@ const EquipmentContainer = styled.div`
   height: 100vh;
   padding: 20px;
   box-sizing: border-box;
-  transform: translate(0,100%);
+
 `;
 
 const Sidebar = styled.div`
