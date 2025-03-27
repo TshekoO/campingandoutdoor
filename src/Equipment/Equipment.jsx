@@ -88,39 +88,63 @@ const AddToCartButton = styled.button`
 `;
 
 const equipmentData = [
-  { id: 1, name: 'Fishing Equipment', category: 'Fishing', image: fishingImg, price: 'R500', description: 'High-quality fishing gear for all your fishing needs.' },
-  { id: 2, name: 'Light', category: 'Lighting', image: lightImg, price: 'R150', description: 'Bright and durable light for camping and outdoor activities.' },
-  { id: 3, name: 'Hiking Gear', category: 'Hiking', image: hikingImg, price: 'R200', description: 'Complete set of hiking gear for your adventures.' },
-  { id: 4, name: 'Tent and Shelter', category: 'Camping', image: tentImg, price: 'R100', description: 'Spacious and weather-resistant tent for camping.' },
-  { id: 5, name: 'Sleeping Gear', category: 'Sleeping', image: sleepingImg, price: 'R200', description: 'our Premium Sleeping Gear ensures a restful nights sleep in any environment.' },
-  { id: 6, name: 'Hunting', category: 'Hunting', image: huntingImg, price: 'R100', description: 'Hunting Gear is designed for performance, durability, and stealth.' },
+  { id: 1, name: 'Fishing Rod', category: 'Fishing', subCategory: 'Fishing Rod', image: fishingImg, price: 'R500', description: 'High-quality fishing rod for all your fishing needs.' },
+  { id: 2, name: 'Fishing Hook', category: 'Fishing', subCategory: 'Fishing Hook', image: fishingImg, price: 'R50', description: 'Durable fishing hooks for various types of fish.' },
+  { id: 3, name: 'Cast Net', category: 'Fishing', subCategory: 'Cast Net', image: fishingImg, price: 'R300', description: 'Strong and reliable cast net for fishing.' },
+  { id: 4, name: 'Light', category: 'Lighting', image: lightImg, price: 'R150', description: 'Bright and durable light for camping and outdoor activities.' },
+  { id: 5, name: 'Hiking Gear', category: 'Hiking', image: hikingImg, price: 'R200', description: 'Complete set of hiking gear for your adventures.' },
+  { id: 6, name: 'Tent and Shelter', category: 'Camping', image: tentImg, price: 'R100', description: 'Spacious and weather-resistant tent for camping.' },
+  { id: 7, name: 'Sleeping Gear', category: 'Sleeping', image: sleepingImg, price: 'R200', description: 'Premium sleeping gear ensures a restful night’s sleep in any environment.' },
+  { id: 8, name: 'Hunting', category: 'Hunting', image: huntingImg, price: 'R100', description: 'Hunting gear designed for performance, durability, and stealth.' },
 ];
 
 const categories = ['All', 'Fishing', 'Lighting', 'Hiking', 'Camping', 'Sleeping', 'Hunting'];
 
-const Equipment = () => {
+const subCategories = {
+  Fishing: ['Fishing Rod', 'Fishing Hook', 'Cast Net'],
+  Lighting: [],
+  Hiking: [],
+  Camping: [],
+  Sleeping: [],
+  Hunting: [],
+};
+
+const Equipment = () => { 
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedSubCategory, setSelectedSubCategory] = useState(null);
 
   const filteredEquipment = selectedCategory === 'All'
     ? equipmentData
+    : selectedSubCategory
+    ? equipmentData.filter(item => item.subCategory === selectedSubCategory)
     : equipmentData.filter(item => item.category === selectedCategory);
 
   return (
-    
     <EquipmentContainer>
-        
       <Sidebar>
         <h2>Categories</h2>
         {categories.map(category => (
-          <CategoryButton key={category} onClick={() => setSelectedCategory(category)}>
+          <CategoryButton key={category} onClick={() => {
+            setSelectedCategory(category);
+            setSelectedSubCategory(null); // Reset sub-category when a new category is selected
+          }}>
             {category}
           </CategoryButton>
         ))}
+        {subCategories[selectedCategory] && subCategories[selectedCategory].length > 0 && (
+          <div>
+            <h3>Sub-Categories</h3>
+            {subCategories[selectedCategory].map(subCategory => (
+              <CategoryButton key={subCategory} onClick={() => setSelectedSubCategory(subCategory)}>
+                {subCategory}
+              </CategoryButton>
+            ))}
+          </div>
+        )}
       </Sidebar>
       <Text>
-      <h1>Stock Available Now</h1>
+        <h1>Stock Available Now</h1>
       </Text>
-      
       <EquipmentList>
         {filteredEquipment.map(item => (
           <EquipmentItem key={item.id}>
@@ -128,7 +152,6 @@ const Equipment = () => {
             <EquipmentImage src={item.image} alt={item.name} />
             <p>{item.description}</p>
             <p><strong>{item.price}</strong></p>
-         
             <AddToCartButton onClick={() => alert(`${item.name} added to cart!`)}>Add to Cart</AddToCartButton>
           </EquipmentItem>
         ))}
