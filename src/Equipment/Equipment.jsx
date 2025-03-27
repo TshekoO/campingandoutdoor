@@ -4,8 +4,11 @@ import fishingImg from '/fishing.jpg';
 import lightImg from '/light.jpg';
 import hikingImg from '/hiking.jpg';
 import tentImg from '/tool.jpg';
+import sleepingImg from '/sleeping-gear.jpg';
+import huntingImg from '/hunting.jpg';
 
 const EquipmentContainer = styled.div`
+padding-top: 50px;
   display: flex;
   width: 100vw;
   height: 100vh;
@@ -86,12 +89,14 @@ const AddToCartButton = styled.button`
 
 const equipmentData = [
   { id: 1, name: 'Fishing Equipment', category: 'Fishing', image: fishingImg, price: 'R500', description: 'High-quality fishing gear for all your fishing needs.' },
-  { id: 2, name: 'Light', category: 'Lighting', image: lightImg, price: 'R200', description: 'Bright and durable light for camping and outdoor activities.' },
-  { id: 3, name: 'Hiking Gear', category: 'Hiking', image: hikingImg, price: 'R75', description: 'Complete set of hiking gear for your adventures.' },
-  { id: 4, name: 'Tent', category: 'Camping', image: tentImg, price: 'R100', description: 'Spacious and weather-resistant tent for camping.' },
+  { id: 2, name: 'Light', category: 'Lighting', image: lightImg, price: 'R150', description: 'Bright and durable light for camping and outdoor activities.' },
+  { id: 3, name: 'Hiking Gear', category: 'Hiking', image: hikingImg, price: 'R200', description: 'Complete set of hiking gear for your adventures.' },
+  { id: 4, name: 'Tent and Shelter', category: 'Camping', image: tentImg, price: 'R100', description: 'Spacious and weather-resistant tent for camping.' },
+  { id: 5, name: 'Sleeping Gear', category: 'Sleeping', image: sleepingImg, price: 'R200', description: 'our Premium Sleeping Gear ensures a restful nights sleep in any environment.' },
+  { id: 6, name: 'Hunting', category: 'Hunting', image: huntingImg, price: 'R100', description: 'Hunting Gear is designed for performance, durability, and stealth.' },
 ];
 
-const categories = ['All', 'Fishing', 'Lighting', 'Hiking', 'Camping'];
+const categories = ['All', 'Fishing', 'Lighting', 'Hiking', 'Camping', 'Sleeping', 'Hunting'];
 
 const Equipment = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -112,7 +117,10 @@ const Equipment = () => {
           </CategoryButton>
         ))}
       </Sidebar>
+      <Text>
       <h1>Stock Available Now</h1>
+      </Text>
+      
       <EquipmentList>
         {filteredEquipment.map(item => (
           <EquipmentItem key={item.id}>
@@ -128,5 +136,8 @@ const Equipment = () => {
     </EquipmentContainer>
   );
 };
-
+ const Text = styled.h1`
+  color: white;
+  margin-left: 17px;  
+  `;
 export default Equipment;

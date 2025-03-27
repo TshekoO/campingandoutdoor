@@ -20,7 +20,7 @@ const Shop = () => {
 };
 
 const ShopContainer = styled.div`
-    background: radial-gradient(circle at bottom right, rgba(200, 101, 14, 0.95) 20%, rgba(243, 134, 0, 0.75) 20%, rgba(0, 0, 0, 0.85) 70%);
+    background: radial-gradient(circle at bottom left, rgba(200, 101, 14, 0.95) 20%, rgba(243, 134, 0, 0.75) 20%, rgba(0, 0, 0, 0.85) 70%);
     background-size: cover;
     position: relative;
     color: white;
@@ -32,7 +32,7 @@ const Logo = styled.div`
     align-items: center;
     top: 30px;
     left: 200px;
-    font-size: 40px;
+    font-size: 50px;
 `;
 
 const Img = styled.img`

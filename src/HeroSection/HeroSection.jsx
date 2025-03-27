@@ -7,13 +7,13 @@ import styled from 'styled-components';
 const HeroSection = () => {
   return (
     <HeroContainer>
-      <Navbar>
+      {/* <Navbar>
         <NavItem to="/">Home</NavItem>
         <NavItem to="./About/About">About Us</NavItem>
         <NavItem to="/equipment">Equipment</NavItem>
         <NavItem to="/contact">Contact</NavItem>
         <CartIcon icon={faCartPlus} />
-      </Navbar>
+      </Navbar> */}
       <Content>
         <Title>TrailBlazer Gear</Title>
         <Phrase>Get Ready for Your Next Adventure</Phrase>
@@ -53,51 +53,51 @@ const HeroContainer = styled.div`
   }
 `;
 
-const Navbar = styled.nav`
-  display: flex;
-  justify-content: flex-start;
-  gap: 50px;
-  align-items: center;
-  background: rgba(0, 0, 0, 0.7);
-  padding: 10px 10px;
-  position: absolute;
-  top: 0;
-  width: 98%;
-  z-index: 1;
-`;
+// const Navbar = styled.nav`
+//   display: flex;
+//   justify-content: flex-start;
+//   gap: 50px;
+//   align-items: center;
+//   background: rgba(0, 0, 0, 0.7);
+//   padding: 10px 10px;
+//   position: absolute;
+//   top: 0;
+//   width: 98%;
+//   z-index: 1;
+// `;
 
-const NavItem = styled(Link)`
-  color: white;
-  text-decoration: none;
-  font-size: 18px;
-  font-weight: bold;
-  position: relative;
+// const NavItem = styled(Link)`
+//   color: white;
+//   text-decoration: none;
+//   font-size: 18px;
+//   font-weight: bold;
+//   position: relative ;
 
-  &:hover {
-    color: white;
-  }
+//   &:hover {
+//     color: white;
+//   }
 
-  &:hover::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -2px;
-    width: 100%;
-    height: 2px;
-    background-color: #f0a500;
-  }
-`;
+//   &:hover::after {
+//     content: '';
+//     position: absolute;
+//     left: 0;
+//     bottom: -2px;
+//     width: 100%;
+//     height: 2px;
+//     background-color: #f0a500;
+//   }
+// `;
 
-const CartIcon = styled(FontAwesomeIcon)`
-  margin-left: 600px;
-  color: white;
-  font-size: 24px;
-  cursor: pointer;
+// const CartIcon = styled(FontAwesomeIcon)`
+//   margin-left: 600px;
+//   color: white;
+//   font-size: 24px;
+//   cursor: pointer;
 
-  &:hover {
-    color: #f0a500;
-  }
-`;
+//   &:hover {
+//     color: #f0a500;
+//   }
+// `;
 
 const Content = styled.div`
   z-index: 2;
