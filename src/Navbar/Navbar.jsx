@@ -13,7 +13,7 @@ const Navbar = () => {
                <NavItem to="/home">Home</NavItem>
                <NavItem to="/about">About Us</NavItem>
                <NavItem to="/equipment">Equipment</NavItem>
-               <NavItem to="/contact">Contact</NavItem>
+               <NavItem to="/footer">Contact</NavItem>
                <CartIcon icon={faCartPlus} />
              </NavbarContainer>
     )

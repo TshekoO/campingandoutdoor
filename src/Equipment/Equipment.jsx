@@ -98,16 +98,15 @@ const equipmentData = [
   { id: 8, name: 'Hunting', category: 'Hunting', image: huntingImg, price: 'R100', description: 'Hunting gear designed for performance, durability, and stealth.' },
 ];
 
-const categories = ['All', 'Fishing', 'Lighting', 'Hiking', 'Camping', 'Sleeping', 'Hunting'];
-
-const subCategories = {
-  Fishing: ['Fishing Rod', 'Fishing Hook', 'Cast Net'],
-  Lighting: [],
-  Hiking: [],
-  Camping: [],
-  Sleeping: [],
-  Hunting: [],
-};
+const categories = [
+  { name: 'All', subCategories: [] },
+  { name: 'Fishing', subCategories: ['Fishing Hook', 'Cast Net'] },
+  { name: 'Lighting', subCategories: [] },
+  { name: 'Hiking', subCategories: [] },
+  { name: 'Camping', subCategories: [] },
+  { name: 'Sleeping', subCategories: [] },
+  { name: 'Hunting', subCategories: [] },
+];
 
 const Equipment = () => { 
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -120,47 +119,54 @@ const Equipment = () => {
     : equipmentData.filter(item => item.category === selectedCategory);
 
   return (
-    <EquipmentContainer>
-      <Sidebar>
-        <h2>Categories</h2>
-        {categories.map(category => (
-          <CategoryButton key={category} onClick={() => {
-            setSelectedCategory(category);
-            setSelectedSubCategory(null); // Reset sub-category when a new category is selected
-          }}>
-            {category}
-          </CategoryButton>
-        ))}
-        {subCategories[selectedCategory] && subCategories[selectedCategory].length > 0 && (
-          <div>
-            <h3>Sub-Categories</h3>
-            {subCategories[selectedCategory].map(subCategory => (
-              <CategoryButton key={subCategory} onClick={() => setSelectedSubCategory(subCategory)}>
-                {subCategory}
-              </CategoryButton>
-            ))}
-          </div>
-        )}
-      </Sidebar>
+    <>
       <Text>
         <h1>Stock Available Now</h1>
       </Text>
-      <EquipmentList>
-        {filteredEquipment.map(item => (
-          <EquipmentItem key={item.id}>
-            <h3>{item.name}</h3>
-            <EquipmentImage src={item.image} alt={item.name} />
-            <p>{item.description}</p>
-            <p><strong>{item.price}</strong></p>
-            <AddToCartButton onClick={() => alert(`${item.name} added to cart!`)}>Add to Cart</AddToCartButton>
-          </EquipmentItem>
-        ))}
-      </EquipmentList>
-    </EquipmentContainer>
+      <EquipmentContainer>
+        <Sidebar>
+          <h2>Categories</h2>
+          {categories.map(category => (
+            <CategoryButton key={category.name} onClick={() => {
+              setSelectedCategory(category.name);
+              setSelectedSubCategory(null); // Reset sub-category when a new category is selected
+            }}>
+              {category.name}
+            </CategoryButton>
+          ))}
+          {categories.find(cat => cat.name === selectedCategory)?.subCategories.length > 0 && (
+            <div>
+              <h3>Sub-Categories</h3>
+              {categories.find(cat => cat.name === selectedCategory).subCategories.map(subCategory => (
+                <CategoryButton key={subCategory} onClick={() => setSelectedSubCategory(subCategory)}>
+                  {subCategory}
+                </CategoryButton>
+              ))}
+            </div>
+          )}
+        </Sidebar>
+        <EquipmentList>
+          {filteredEquipment.map(item => (
+            <EquipmentItem key={item.id}>
+              <h3>{item.name}</h3>
+              <EquipmentImage src={item.image} alt={item.name} />
+              <p>{item.description}</p>
+              <p><strong>{item.price}</strong></p>
+              <AddToCartButton onClick={() => alert(`${item.name} added to cart!`)}>Add to Cart</AddToCartButton>
+            </EquipmentItem>
+          ))}
+        </EquipmentList>
+      </EquipmentContainer>
+    </>
   );
 };
- const Text = styled.h1`
+
+const Text = styled.div`
   color: white;
-  margin-left: 17px;  
-  `;
+  background-color: black;
+
+  text-align: center;
+  padding: 20px 0;
+`;
+
 export default Equipment;
