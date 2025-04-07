@@ -88,7 +88,7 @@ const AddToCartButton = styled.button`
 `;
 
 const equipmentData = [
-  { id: 1, name: 'Fishing Rod', category: 'Fishing', subCategory: 'Fishing Rod', image: fishingImg, price: 'R500', description: 'High-quality fishing rod for all your fishing needs.' },
+  { id: 1, name: 'Fishing Rod', category: 'Fishing', image: fishingImg, price: 'R500', description: 'High-quality fishing rod for all your fishing needs.' },
   { id: 2, name: 'Fishing Hook', category: 'Fishing', subCategory: 'Fishing Hook', image: fishingImg, price: 'R50', description: 'Durable fishing hooks for various types of fish.' },
   { id: 3, name: 'Cast Net', category: 'Fishing', subCategory: 'Cast Net', image: fishingImg, price: 'R300', description: 'Strong and reliable cast net for fishing.' },
   { id: 4, name: 'Light', category: 'Lighting', image: lightImg, price: 'R150', description: 'Bright and durable light for camping and outdoor activities.' },
@@ -97,10 +97,14 @@ const equipmentData = [
   { id: 7, name: 'Sleeping Gear', category: 'Sleeping', image: sleepingImg, price: 'R200', description: 'Premium sleeping gear ensures a restful night’s sleep in any environment.' },
   { id: 8, name: 'Hunting', category: 'Hunting', image: huntingImg, price: 'R100', description: 'Hunting gear designed for performance, durability, and stealth.' },
 ];
+const subCategories = [ 
+   { id: 2, name: 'Fishing Hook', category: 'Fishing', subCategory: 'Fishing Hook', image: fishingImg, price: 'R50', description: 'Durable fishing hooks for various types of fish.' },
+ 
 
+]
 const categories = [
-  { name: 'All', subCategories: [] },
-  { name: 'Fishing', subCategories: ['Fishing Hook', 'Cast Net'] },
+  { name: 'All' , subCategories: [] },
+  { name: 'Fishing', subCategories: [] },
   { name: 'Lighting', subCategories: [] },
   { name: 'Hiking', subCategories: [] },
   { name: 'Camping', subCategories: [] },
@@ -110,7 +114,8 @@ const categories = [
 
 const Equipment = () => { 
   const [selectedCategory, setSelectedCategory] = useState('All');
-  const [selectedSubCategory, setSelectedSubCategory] = useState(null);
+  const [selectedSubCategory, setSelectedSubCategory] = useState('Fishing Hook');
+
 
   const filteredEquipment = selectedCategory === 'All'
     ? equipmentData
@@ -125,7 +130,7 @@ const Equipment = () => {
       </Text>
       <EquipmentContainer>
         <Sidebar>
-          <h2>Categories</h2>
+         
           {categories.map(category => (
             <CategoryButton key={category.name} onClick={() => {
               setSelectedCategory(category.name);

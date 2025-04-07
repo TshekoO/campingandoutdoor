@@ -2,26 +2,26 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-
 const Footer = () => {
     return (
         <FooterContainer>
             <FooterContent>
-                <FooterLinks>
-                    <FooterLink to="/">Home</FooterLink>
-                    <FooterLink to="/shop">Shop</FooterLink>
-                    <FooterLink to="/shop">Equipment</FooterLink>
-                    <FooterLink to="/contact">Contact</FooterLink>
-                </FooterLinks>
-              
-                <FooterText>© 2025 Camping and Outdoor. All rights reserved.</FooterText>
+                <h1>Contact</h1>
+                <ContactInfo>
+                    <p>Phone: +27 123 456 789</p>
+                    <p>Email: trailblazer@gmail.com</p>
+                </ContactInfo>
+
+                <Motto>"Explore the Outdoors, Embrace the Adventure!"</Motto>
+
+                <FooterText>© 2025 TrailBlazer. All rights reserved.</FooterText>
             </FooterContent>
         </FooterContainer>
     );
 };
 
 const FooterContainer = styled.footer`
-position: relative;
+    position: relative;
     background-color: #333;
     color: white;
     padding: 20px 0;
@@ -49,18 +49,17 @@ const FooterLink = styled(Link)`
     }
 `;
 
-const SocialMedia = styled.div`
+const ContactInfo = styled.div`
     margin-bottom: 20px;
+
+    p {
+        margin: 5px 0;
+    }
 `;
 
-const SocialIcon = styled.a`
-    color: white;
-    margin: 0 10px;
-    font-size: 1.5em;
-
-    &:hover {
-        color: #ff9900;
-    }
+const Motto = styled.p`
+    font-style: italic;
+    margin-bottom: 20px;
 `;
 
 const FooterText = styled.p`
