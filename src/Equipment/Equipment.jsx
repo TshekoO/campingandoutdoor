@@ -20,7 +20,7 @@ import BinocularsImg from '/Binoculars.jpg';
 import clothingImg from '/clothing.jpg';
 
 const EquipmentContainer = styled.div`
-padding-top: 50px;
+  padding-top: 50px;
   display: flex;
   width: 100vw;
   height: 100vh;
@@ -93,6 +93,50 @@ const AddToCartButton = styled.button`
   cursor: pointer;
   margin-top: 10px;
   transition: background 0.3s;
+  align-self: left;
+  &:hover {
+    background-color: #a06010;
+  }
+`;
+
+const ModalOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+`;
+
+const ModalContent = styled.div`
+  background: #2a2a2a;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  color: white;
+  width: 200px;
+`;
+
+const QuantityInput = styled.input`
+  width: 50px;
+  padding: 5px;
+  margin: 10px;
+  text-align: center;
+`;
+
+const CloseButton = styled.button`
+  background-color: #d17b12;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.3s;
 
   &:hover {
     background-color: #a06010;
@@ -136,10 +180,29 @@ const categories = [
 const Equipment = () => { 
   const [selectedCategory, setSelectedCategory] = useState('Fishing'); // Default to 'Fishing'
   const [selectedSubCategory, setSelectedSubCategory] = useState(null); // No sub-category selected by default
+  const [cartPopup, setCartPopup] = useState({ isOpen: false, item: null, quantity: 1 });
 
   const filteredEquipment = selectedSubCategory
     ? equipmentData.filter(item => item.subCategory === selectedSubCategory)
     : equipmentData.filter(item => item.category === selectedCategory);
+
+  const openCartPopup = (item) => {
+    setCartPopup({ isOpen: true, item, quantity: 1 });
+  };
+
+  const closeCartPopup = () => {
+    setCartPopup({ isOpen: false, item: null, quantity: 1 });
+  };
+
+  const handleQuantityChange = (e) => {
+    const quantity = Math.max(1, parseInt(e.target.value) || 1); // Ensure quantity is at least 1
+    setCartPopup({ ...cartPopup, quantity });
+  };
+
+  const addToCart = () => {
+    alert(`Added ${cartPopup.quantity} x ${cartPopup.item.name} to the cart!`);
+    closeCartPopup();
+  };
 
   return (
     <>
@@ -174,11 +237,33 @@ const Equipment = () => {
               <EquipmentImage src={item.image} alt={item.name} />
               <p>{item.description}</p>
               <p><strong>{item.price}</strong></p>
-              <AddToCartButton onClick={() => alert(`${item.name} added to cart!`)}>Add to Cart</AddToCartButton>
+              <AddToCartButton onClick={() => openCartPopup(item)}>Add to Cart</AddToCartButton>
             </EquipmentItem>
           ))}
         </EquipmentList>
       </EquipmentContainer>
+
+      {cartPopup.isOpen && (
+        <ModalOverlay>
+          <ModalContent>
+          <CloseButton onClick={closeCartPopup}>X</CloseButton>  
+            <h3>{cartPopup.item.name}</h3> 
+         
+            <EquipmentImage src={cartPopup.item.image} alt={cartPopup.item.name} />
+        
+            <p>Quantity:</p>
+            <QuantityInput
+              type="number"
+              min="1"
+              value={cartPopup.quantity}
+              onChange={handleQuantityChange}
+            />
+            <p>Total Price: <strong>R{parseInt(cartPopup.item.price.slice(1)) * cartPopup.quantity}</strong></p>
+            <AddToCartButton onClick={addToCart}>Add</AddToCartButton>
+            
+          </ModalContent>
+        </ModalOverlay>
+      )}
     </>
   );
 };
