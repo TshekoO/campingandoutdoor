@@ -3,15 +3,21 @@ import styled from 'styled-components';
 import fishingImg from '/fishing.jpg';
 import lightImg from '/led.jpg';
 import hikingImg from '/backpack.jpg';
-import tentImg from '/tool.jpg';
-import sleepingImg from '/sleeping-gear.jpg';
-import huntingImg from '/hunting.jpg';
+import tentImg from '/tent.jpg';
+import sleepingImg from '/sleeping.jpg';
+import huntingImg from '/knife.jpg';
 import hookImg from '/hook.jpg';
 import castImg from '/cast.jpg';
 import headlampImg from '/headlamp.jpg';
 import solarImg from '/solar.jpg';
 import bootsImg from '/boots.jpg';
 import trekkingImg from '/trekking.jpg';
+import popImg from '/pop-up.jpg';
+import tunnelImg from '/tunnel.jpg';
+import sleepingpadImg from '/sleepingpad.jpg';
+import campingcotImg from '/cot.jpg';
+import BinocularsImg from '/Binoculars.jpg';
+import clothingImg from '/clothing.jpg';
 
 const EquipmentContainer = styled.div`
 padding-top: 50px;
@@ -103,9 +109,15 @@ const equipmentData = [
   { id: 5, name: 'Backpack', category: 'Hiking', image: hikingImg, price: 'R500', description: 'A hiking backpack is built to carry all your essentials like water, food, extra clothes, and first aid. ' },
   {  name: 'Hiking Boots', category: 'Hiking', subCategory: 'HikingBoots', image: bootsImg, price: 'R700', description: 'Hiking boots are sturdy, supportive footwear designed for rough terrain.' },
   {  name: 'Trekking Poles', category: 'Hiking', subCategory: 'TrekkingPoles', image: trekkingImg, price: 'R800', description: 'Trekking poles provide balance and reduce strain on your knees, especially during uphill climbs and downhill descents.' },
-  { id: 6, name: 'Tent and Shelter', category: 'Camping', image: tentImg, price: 'R100', description: 'Spacious and weather-resistant tent for camping.' },
-  { id: 7, name: 'Sleeping Gear', category: 'Sleeping', image: sleepingImg, price: 'R200', description: 'Premium sleeping gear ensures a restful night’s sleep in any environment.' },
-  { id: 8, name: 'Hunting', category: 'Hunting', image: huntingImg, price: 'R100', description: 'Hunting gear designed for performance, durability, and stealth.' },
+  { id: 6, name: 'Dome Tent', category: 'Camping', image: tentImg, price: 'R1000', description: 'A dome tent is a popular choice for casual campers due to its easy setup and stable structure. ' },
+  {  name: 'Tunnel Tent', category: 'Camping', subCategory: 'DomeTent', image: tunnelImg, price: 'R2000', description: 'Tunnel tents use multiple parallel poles to create a tunnel-like shape, offering spacious interiors and good headroom.' },
+  {  name: 'Pop-Up Tent', category: 'Camping', subCategory: 'PopTent', image: popImg, price: 'R1300', description: 'A pop-up tent is perfect for quick setups and short camping trips. Just take it out of the bag, and it springs into shape in seconds.' },
+  { id: 7, name: 'Sleeping Bag', category: 'Sleeping', image: sleepingImg, price: 'R500', description: 'A sleeping bag is a must-have for staying warm and comfortable at night.' },
+  {  name: 'Sleeping pad', category: 'Sleeping', subCategory: 'SleepingBag', image: sleepingpadImg, price: 'R700', description: 'A sleeping pad provides cushioning and insulation between you and the ground.' },
+  {  name: 'Camping Cot', category: 'Sleeping', subCategory: 'CampingCot', image: campingcotImg, price: 'R1000', description: 'A camping cot is a foldable bed frame with a fabric top, lifting you off the ground for added comfort and ventilation. ' },
+  { id: 8, name: 'Hunting-Knife', category: 'Hunting', image: huntingImg, price: 'R200', description: 'A hunting knife is a versatile tool used for field dressing, skinning, and processing game.' },
+  {  name: 'Camouflage Clothing', category: 'Hunting', subCategory: 'Clothing', image: clothingImg, price: 'R1000', description: 'Camouflage clothing helps hunters blend into their environment to avoid detection by wildlife. ' },
+  {  name: 'Binoculars', category: 'Hunting', subCategory: 'Binoculars', image: BinocularsImg, price: 'R700', description: 'Binoculars are essential for scouting game from a distance. ' },
 ];
 const subCategories = [ 
    { id: 2, name: 'Fishing Hook', category: 'Fishing', subCategory: 'Fishing Hook', image: fishingImg, price: 'R50', description: 'Durable fishing hooks for various types of fish.' },
