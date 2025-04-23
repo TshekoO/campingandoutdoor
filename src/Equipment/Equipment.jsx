@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import fishingImg from '/fishing.jpg';
-import lightImg from '/light.jpg';
-import hikingImg from '/hiking.jpg';
+import lightImg from '/led.jpg';
+import hikingImg from '/backpack.jpg';
 import tentImg from '/tool.jpg';
 import sleepingImg from '/sleeping-gear.jpg';
 import huntingImg from '/hunting.jpg';
+import hookImg from '/hook.jpg';
+import castImg from '/cast.jpg';
+import headlampImg from '/headlamp.jpg';
+import solarImg from '/solar.jpg';
+import bootsImg from '/boots.jpg';
+import trekkingImg from '/trekking.jpg';
 
 const EquipmentContainer = styled.div`
 padding-top: 50px;
@@ -89,10 +95,14 @@ const AddToCartButton = styled.button`
 
 const equipmentData = [
   { id: 1, name: 'Fishing Rod', category: 'Fishing', image: fishingImg, price: 'R500', description: 'High-quality fishing rod for all your fishing needs.' },
-  { id: 2, name: 'Fishing Hook', category: 'Fishing', subCategory: 'Fishing Hook', image: fishingImg, price: 'R50', description: 'Durable fishing hooks for various types of fish.' },
-  { id: 3, name: 'Cast Net', category: 'Fishing', subCategory: 'Cast Net', image: fishingImg, price: 'R300', description: 'Strong and reliable cast net for fishing.' },
-  { id: 4, name: 'Light', category: 'Lighting', image: lightImg, price: 'R150', description: 'Bright and durable light for camping and outdoor activities.' },
-  { id: 5, name: 'Hiking Gear', category: 'Hiking', image: hikingImg, price: 'R200', description: 'Complete set of hiking gear for your adventures.' },
+  {  name: 'Fishing Hook', category: 'Fishing', subCategory: 'Fishing Hook', image: hookImg, price: 'R50', description: 'Durable fishing hooks for various types of fish.' },
+  {  name: 'Cast Net', category: 'Fishing', subCategory: 'Cast Net', image: castImg, price: 'R300', description: 'Strong and reliable cast net for fishing.' },
+  { id: 4, name: 'LED Lantern', category: 'Lighting', image: lightImg, price: 'R150', description: 'An LED lantern provides 360-degree illumination and is ideal for lighting up a tent or campsite. ' },
+  {  name: 'Headlamp', category: 'Lighting', subCategory: 'Headlamp', image: headlampImg, price: 'R200', description: 'A headlamp is a hands-free light worn on the forehead, making it ideal for tasks.' },
+  {  name: 'Solar-Powered Light', category: 'Lighting', subCategory: 'Solar', image: solarImg, price: 'R300', description: 'A solar-powered camping light charges during the day using sunlight and provides eco-friendly illumination at night. ' },
+  { id: 5, name: 'Backpack', category: 'Hiking', image: hikingImg, price: 'R500', description: 'A hiking backpack is built to carry all your essentials like water, food, extra clothes, and first aid. ' },
+  {  name: 'Hiking Boots', category: 'Hiking', subCategory: 'HikingBoots', image: bootsImg, price: 'R700', description: 'Hiking boots are sturdy, supportive footwear designed for rough terrain.' },
+  {  name: 'Trekking Poles', category: 'Hiking', subCategory: 'TrekkingPoles', image: trekkingImg, price: 'R800', description: 'Trekking poles provide balance and reduce strain on your knees, especially during uphill climbs and downhill descents.' },
   { id: 6, name: 'Tent and Shelter', category: 'Camping', image: tentImg, price: 'R100', description: 'Spacious and weather-resistant tent for camping.' },
   { id: 7, name: 'Sleeping Gear', category: 'Sleeping', image: sleepingImg, price: 'R200', description: 'Premium sleeping gear ensures a restful night’s sleep in any environment.' },
   { id: 8, name: 'Hunting', category: 'Hunting', image: huntingImg, price: 'R100', description: 'Hunting gear designed for performance, durability, and stealth.' },
@@ -103,7 +113,6 @@ const subCategories = [
 
 ]
 const categories = [
-  { name: 'All' , subCategories: [] },
   { name: 'Fishing', subCategories: [] },
   { name: 'Lighting', subCategories: [] },
   { name: 'Hiking', subCategories: [] },
@@ -113,13 +122,10 @@ const categories = [
 ];
 
 const Equipment = () => { 
-  const [selectedCategory, setSelectedCategory] = useState('All');
-  const [selectedSubCategory, setSelectedSubCategory] = useState('Fishing Hook');
+  const [selectedCategory, setSelectedCategory] = useState('Fishing'); // Default to 'Fishing'
+  const [selectedSubCategory, setSelectedSubCategory] = useState(null); // No sub-category selected by default
 
-
-  const filteredEquipment = selectedCategory === 'All'
-    ? equipmentData
-    : selectedSubCategory
+  const filteredEquipment = selectedSubCategory
     ? equipmentData.filter(item => item.subCategory === selectedSubCategory)
     : equipmentData.filter(item => item.category === selectedCategory);
 
@@ -130,7 +136,6 @@ const Equipment = () => {
       </Text>
       <EquipmentContainer>
         <Sidebar>
-         
           {categories.map(category => (
             <CategoryButton key={category.name} onClick={() => {
               setSelectedCategory(category.name);
