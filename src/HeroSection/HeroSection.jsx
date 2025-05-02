@@ -31,7 +31,7 @@ const HeroContainer = styled.div`
   background-image: url('/camping.jpg');
   background-size: cover;
   position: relative;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   display: flex;
   flex-direction: column;

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useCart } from '../CartContext/CartContext'; // Import useCart from CartContext
 import fishingImg from '/fishing.jpg';
 import lightImg from '/led.jpg';
 import hikingImg from '/backpack.jpg';
@@ -18,8 +19,6 @@ import sleepingpadImg from '/sleepingpad.jpg';
 import campingcotImg from '/cot.jpg';
 import BinocularsImg from '/Binoculars.jpg';
 import clothingImg from '/clothing.jpg';
-
-
 
 const EquipmentContainer = styled.div`
   padding-top: 50px;
@@ -88,7 +87,9 @@ const EquipmentItem = styled.div`
 `;
 
 const EquipmentImage = styled.img`
-  width: 80%;
+  width: 150px; /* Set a fixed width */
+  height: 150px; /* Set a fixed height */
+  object-fit: cover; /* Ensure the image scales properly without distortion */
   margin-bottom: 10px;
   border-radius: 10px;
 `;
@@ -191,6 +192,8 @@ const Equipment = () => {
   const [selectedSubCategory, setSelectedSubCategory] = useState(null); // No sub-category selected by default
   const [cartPopup, setCartPopup] = useState({ isOpen: false, item: null, quantity: 1 });
 
+  const { addToCart } = useCart(); // Access addToCart from CartContext
+
   const filteredEquipment = selectedSubCategory
     ? equipmentData.filter(item => item.subCategory === selectedSubCategory)
     : equipmentData.filter(item => item.category === selectedCategory);
@@ -208,8 +211,9 @@ const Equipment = () => {
     setCartPopup({ ...cartPopup, quantity });
   };
 
-  const addToCart = () => {
-    alert(`Added ${cartPopup.quantity} x ${cartPopup.item.name} to the cart!`);
+  const handleAddToCart = () => {
+    const itemWithQuantity = { ...cartPopup.item, quantity: cartPopup.quantity };
+    addToCart(itemWithQuantity); // Add item to the cart using CartContext
     closeCartPopup();
   };
 
@@ -268,7 +272,7 @@ const Equipment = () => {
               onChange={handleQuantityChange}
             />
             <p>Total Price: <strong>R{parseInt(cartPopup.item.price.slice(1)) * cartPopup.quantity}</strong></p>
-            <AddToCartButton onClick={addToCart}>Add</AddToCartButton>
+            <AddToCartButton onClick={handleAddToCart}>Add</AddToCartButton>
             
           </ModalContent>
         </ModalOverlay>

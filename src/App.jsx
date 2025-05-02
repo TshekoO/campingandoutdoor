@@ -8,9 +8,11 @@ import Home from './pages/HomePage';
 import Footer from './Footer/Footer';
 import Contact from './Contact/Contact';
 
+import { CartProvider } from "./CartContext/CartContext";
 
 function App() {
   return (
+    <CartProvider>
     <Router>
       <Navbar />  
       <Routes>
@@ -22,6 +24,7 @@ function App() {
         <Route path='/contact' element={<Contact/>} />
       </Routes>
     </Router>
+  </CartProvider>
   );
 }
 
