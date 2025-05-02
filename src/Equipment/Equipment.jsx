@@ -19,6 +19,8 @@ import campingcotImg from '/cot.jpg';
 import BinocularsImg from '/Binoculars.jpg';
 import clothingImg from '/clothing.jpg';
 
+
+
 const EquipmentContainer = styled.div`
   padding-top: 50px;
   display: flex;
@@ -26,6 +28,9 @@ const EquipmentContainer = styled.div`
   height: 100vh;
   background: linear-gradient(135deg, #1f1f1f, #333);
   color: white;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
   box-sizing: border-box;
 `;
 
@@ -71,6 +76,10 @@ const EquipmentItem = styled.div`
   text-align: center;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
   transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  justify-content: space-between; /* Space out content evenly */
+  align-items: center; /* Center align items horizontally */
 
   &:hover {
     transform: translateY(-5px);
