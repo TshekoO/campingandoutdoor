@@ -1,0 +1,60 @@
+body {
+    margin-top: 10px;
+  background-image: url(one.jpg); /* Replace with your image path */
+    background-size: cover;
+  color: rgb(0, 0, 0); /* Optional: Ensures text is readable on a black background */
+}
+
+.contact-container {
+
+  margin: 0 auto;
+  margin-top: 30px;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+
+}
+
+.contact-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.contact-form .form-group {
+  margin-bottom: 15px;
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.contact-form textarea {
+  height: 100px;
+  resize: none;
+}
+
+.submit-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #000000;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: #ca6e28;
+}
