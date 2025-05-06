@@ -1,26 +1,33 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartPlus, faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'; // Import plus and minus icons
+import { faCartPlus, faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
-import { useCart } from '../CartContext/CartContext'; // Import useCart
+import { useCart } from '../CartContext/CartContext';
 
 const Navbar = () => {
-    const [showCart, setShowCart] = useState(false); // State to toggle cart visibility
-    const toggleCart = () => setShowCart(!showCart); // Toggle cart visibility
+    const [showCart, setShowCart] = useState(false);
+    const toggleCart = () => setShowCart(!showCart);
 
-    const { cart, addToCart, removeFromCart } = useCart(); // Access cart, addToCart, and removeFromCart from CartContext
-    const cartCount = cart.reduce((total, item) => total + (item.quantity || 1), 0); // Calculate total items
-    const totalPrice = cart.reduce((total, item) => total + (parseInt(item.price.slice(1)) * (item.quantity || 1)), 0); // Calculate total price
+    const { cart, addToCart, removeFromCart } = useCart();
+    const cartCount = cart.reduce((total, item) => total + (item.quantity || 1), 0);
+    const totalPrice = cart.reduce(
+        (total, item) => total + (parseFloat(item.price.slice(1)) * (item.quantity || 1)),
+        0
+    );
 
     const increaseQuantity = (item) => {
-        addToCart({ ...item, quantity: 1 }); // Add one more of the same item
+        addToCart(item); // Let addToCart handle quantity increment
     };
-
+    
     const decreaseQuantity = (item) => {
         if (item.quantity > 1) {
-            removeFromCart(item.id, false); // Remove one quantity of the item
+            removeFromCart(item.id, false);
         }
+    };
+
+    const deleteItem = (itemId) => {
+        removeFromCart(itemId, true); // Assuming `true` removes the item completely
     };
 
     return (
@@ -30,13 +37,13 @@ const Navbar = () => {
             <NavItem to="/equipment">Equipment</NavItem>
             <NavItem to="/contact">Contact</NavItem>
             <CartIconContainer>
-                <CartIcon icon={faCartPlus} onClick={toggleCart} /> {/* Toggle cart on click */}
-                {cartCount > 0 && <CartCount>{cartCount}</CartCount>} {/* Show count if > 0 */}
-                {showCart && ( // Show cart details if showCart is true
+                <CartIcon icon={faCartPlus} onClick={toggleCart} aria-label="Toggle cart" />
+                {cartCount > 0 && <CartCount>{cartCount}</CartCount>}
+                {showCart && (
                     <CartDropdown>
                         <PopupHeader>
                             <h3>Your Cart</h3>
-                            <CloseButton onClick={toggleCart}>X</CloseButton>
+                            <CloseButton onClick={toggleCart} aria-label="Close cart">X</CloseButton>
                         </PopupHeader>
                         {cart.length > 0 ? (
                             <>
@@ -45,22 +52,25 @@ const Navbar = () => {
                                         <ItemImage src={item.image} alt={item.name} />
                                         <ItemDetails>
                                             <span>{item.name}</span>
-                                            <span className="item-description">{item.description}</span> {/* Add description */}
+                                            <span className="item-description">{item.description}</span>
                                             <QuantityControls>
-                                                <QuantityButton onClick={() => decreaseQuantity(item)}>
+                                                <QuantityButton onClick={() => decreaseQuantity(item)} aria-label="Decrease quantity">
                                                     <FontAwesomeIcon icon={faMinus} />
                                                 </QuantityButton>
                                                 <span>{item.quantity || 1}</span>
-                                                <QuantityButton onClick={() => increaseQuantity(item)}>
+                                                <QuantityButton onClick={() => increaseQuantity(item)} aria-label="Increase quantity">
                                                     <FontAwesomeIcon icon={faPlus} />
                                                 </QuantityButton>
                                             </QuantityControls>
                                             <span>Price: {item.price}</span>
                                         </ItemDetails>
+                                        <DeleteButton onClick={() => deleteItem(item.id)} aria-label="Delete item">
+                                            Remove
+                                        </DeleteButton>
                                     </CartItem>
                                 ))}
                                 <CartTotal>
-                                    <strong>Total:</strong> R{totalPrice}
+                                    <strong>Total:</strong> R{totalPrice.toFixed(2)}
                                 </CartTotal>
                                 <PayButton>Pay Now</PayButton>
                             </>
@@ -83,7 +93,7 @@ const NavbarContainer = styled.nav`
     padding: 10px 10px;
     position: absolute;
     top: 0;
-    width: 99%;
+    width: 100%;
     z-index: 100;
 `;
 
@@ -93,7 +103,6 @@ const NavItem = styled(NavLink)`
     font-size: 18px;
     font-weight: bold;
     position: relative;
-
 
     &:hover {
         color: white;
@@ -111,8 +120,8 @@ const NavItem = styled(NavLink)`
 `;
 
 const CartIconContainer = styled.div`
+    margin-left: 400px;
     position: relative;
-    margin-left: 500px; /* Push to the right */
 `;
 
 const CartIcon = styled(FontAwesomeIcon)`
@@ -139,17 +148,20 @@ const CartCount = styled.span`
 
 const CartDropdown = styled.div`
     position: absolute;
-    top: 50px;
+    top: 40px;
     right: 0;
     background: white;
     color: black;
-    width: 600px;
+    width: 400px; /* Smaller width */
+    max-height: 500px; /* Optional: prevents it from growing too tall */
+    overflow-y: auto;  /* Enables scrolling if content is too long */
     border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 200;
     padding: 10px;
 `;
+
 
 const PopupHeader = styled.div`
     display: flex;
@@ -183,6 +195,7 @@ const CartItem = styled.div`
     padding: 10px 0;
     border-bottom: 1px solid #ddd;
     gap: 40px;
+
     &:last-child {
         border-bottom: none;
     }
@@ -231,6 +244,18 @@ const QuantityButton = styled.button`
 
     &:hover {
         color: #f0a500;
+    }
+`;
+
+const DeleteButton = styled.button`
+    background: none;
+    border: none;
+    color: red;
+    font-size: 14px;
+    cursor: pointer;
+
+    &:hover {
+        color: darkred;
     }
 `;
 

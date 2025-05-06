@@ -19,6 +19,7 @@ import sleepingpadImg from '/sleepingpad.jpg';
 import campingcotImg from '/cot.jpg';
 import BinocularsImg from '/Binoculars.jpg';
 import clothingImg from '/clothing.jpg';
+import footer from '../Footer/Footer'; // Import footer for styling
 
 const EquipmentContainer = styled.div`
   padding-top: 50px;
@@ -277,6 +278,9 @@ const Equipment = () => {
           </ModalContent>
         </ModalOverlay>
       )}
+    
+      <footer />
+     
     </>
   );
 };
