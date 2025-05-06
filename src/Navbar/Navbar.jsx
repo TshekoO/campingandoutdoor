@@ -33,8 +33,9 @@ const Navbar = () => {
     return (
         <NavbarContainer>
             <NavItem to="/home">Home</NavItem>
-            <NavItem to="/about">About Us</NavItem>
             <NavItem to="/equipment">Equipment</NavItem>
+            <NavItem to="/about">About Us</NavItem>
+           
             <NavItem to="/contact">Contact</NavItem>
             <CartIconContainer>
                 <CartIcon icon={faCartPlus} onClick={toggleCart} aria-label="Toggle cart" />
@@ -148,7 +149,7 @@ const CartCount = styled.span`
 
 const CartDropdown = styled.div`
     position: absolute;
-    top: 40px;
+    top: 30px;
     right: 0;
     background: white;
     color: black;
