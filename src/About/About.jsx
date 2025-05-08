@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const About = () => {
     return (
         <AboutContainer>
-            <Header>About Us</Header>
+            <Header>TrailBlazer</Header>
             <Description>
                 Welcome to our store! We offer a wide range of high-quality camping 
                 and outdoor equipment and gear.<br/> From tents and sleeping bags to cooking supplies and hiking tools,

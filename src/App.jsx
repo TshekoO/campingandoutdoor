@@ -7,8 +7,8 @@ import About from './About/About';
 import Home from './pages/HomePage';
 import Footer from './Footer/Footer';
 import Contact from './Contact/Contact';
-
 import { CartProvider } from "./CartContext/CartContext";
+import AboutUS from './About/AboutUS';
 
 function App() {
   return (
@@ -19,6 +19,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/home' element={<Home />} />
         <Route path='/about' element={<About />} />
+        <Route path='/aboutus' element={<AboutUS />} />
         <Route path='/shop' element={<Shop />} />
         <Route path='/equipment' element={<Equipment />} />
         <Route path='/contact' element={<Contact/>} />

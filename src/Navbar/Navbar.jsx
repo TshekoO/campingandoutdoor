@@ -34,7 +34,7 @@ const Navbar = () => {
         <NavbarContainer>
             <NavItem to="/home">Home</NavItem>
             <NavItem to="/equipment">Equipment</NavItem>
-            <NavItem to="/about">About Us</NavItem>
+            <NavItem to="/aboutus">About Us</NavItem>
            
             <NavItem to="/contact">Contact</NavItem>
             <CartIconContainer>
@@ -121,7 +121,7 @@ const NavItem = styled(NavLink)`
 `;
 
 const CartIconContainer = styled.div`
-    margin-left: 400px;
+    margin-left: 600px;
     position: relative;
 `;
 
