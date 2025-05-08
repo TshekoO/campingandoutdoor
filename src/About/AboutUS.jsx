@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import video from '/camp2.mp4';
+
 
 const HeroSection = styled.div`
   position: relative;
@@ -59,10 +59,12 @@ const AboutUS = () => {
   return (
     <main>
       <HeroSection>
-        <VideoBackground autoPlay loop muted>
-          <source src={video} type="video/mp4" />
-          Your browser does not support the video tag.
-        </VideoBackground>
+      <VideoBackground autoPlay loop muted>
+  <source src="/film2.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</VideoBackground>
+
+
         <Overlay />
       </HeroSection>
       <DescriptionSection>
