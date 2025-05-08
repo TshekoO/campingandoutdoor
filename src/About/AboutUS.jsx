@@ -1,5 +1,6 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import styled from 'styled-components';
+import video from '/camp2.mp4';
 
 const HeroSection = styled.div`
   position: relative;
@@ -25,7 +26,18 @@ const VideoBackground = styled.video`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  pointer-events: none;
   z-index: -1;
+`;
+
+const Overlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+  z-index: 0;
 `;
 
 const DescriptionSection = styled.div`
@@ -44,22 +56,14 @@ const DescriptionSection = styled.div`
 `;
 
 const AboutUS = () => {
-  const videoRef = useRef(null);
-
   return (
-    <div>
+    <main>
       <HeroSection>
-        <VideoBackground
-          ref={videoRef}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-        >
-          <source src="/camping.mp4" type="video/mp4" />
+        <VideoBackground autoPlay loop muted>
+          <source src={video} type="video/mp4" />
           Your browser does not support the video tag.
         </VideoBackground>
+        <Overlay />
       </HeroSection>
       <DescriptionSection>
         <h2>About Us</h2>
@@ -71,7 +75,7 @@ const AboutUS = () => {
           customer satisfaction.
         </p>
       </DescriptionSection>
-    </div>
+    </main>
   );
 };
 
