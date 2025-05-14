@@ -124,12 +124,31 @@ const ModalOverlay = styled.div`
 `;
 
 const ModalContent = styled.div`
+  position: relative;
   background: #2a2a2a;
   padding: 20px;
   border-radius: 12px;
-  text-align: center;
   color: white;
-  width: 200px;
+  width: 60vw; /* Reduced width */
+  height: auto; /* Adjust height based on content */
+  max-height: 80vh; /* Prevent it from exceeding 80% of the viewport height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto; /* Add scroll if content overflows */
+`;
+
+const ModalBody = styled.div`
+  display: flex;
+  flex-direction: row; /* Place image and description side by side */
+  gap: 20px; /* Add space between image and description */
+  align-items: flex-start; /* Align items at the top */
+`;
+
+const ModalDescription = styled.div`
+  flex: 1; /* Allow the description to take up remaining space */
+  text-align: left; /* Align text to the left */
 `;
 
 const QuantityInput = styled.input`
@@ -140,13 +159,16 @@ const QuantityInput = styled.input`
 `;
 
 const CloseButton = styled.button`
+  position: absolute; /* Position it relative to the modal */
+  top: 10px; /* Adjust the top position */
+  right: 10px; /* Adjust the right position */
   background-color: #d17b12;
   color: white;
   border: none;
-  padding: 8px 16px;
-  border-radius: 8px;
+  padding: 4px 8px; /* Reduced padding */
+  border-radius: 4px; /* Smaller border radius */
   cursor: pointer;
-  margin-top: 10px;
+  font-size: 12px; /* Smaller font size */
   transition: background 0.3s;
 
   &:hover {
@@ -246,12 +268,11 @@ const Equipment = () => {
         </Sidebar>
         <EquipmentList>
           {filteredEquipment.map(item => (
-            <EquipmentItem key={item.id}>
+            <EquipmentItem key={item.id} onClick={() => openCartPopup(item)}>
               <h3>{item.name}</h3>
               <EquipmentImage src={item.image} alt={item.name} />
               <p>{item.description}</p>
               <p><strong>{item.price}</strong></p>
-              <AddToCartButton onClick={() => openCartPopup(item)}>Add to Cart</AddToCartButton>
             </EquipmentItem>
           ))}
         </EquipmentList>
@@ -260,27 +281,29 @@ const Equipment = () => {
       {cartPopup.isOpen && (
         <ModalOverlay>
           <ModalContent>
-          <CloseButton onClick={closeCartPopup}>X</CloseButton>  
-            <h3>{cartPopup.item.name}</h3> 
-         
-            <EquipmentImage src={cartPopup.item.image} alt={cartPopup.item.name} />
-        
-            <p>Quantity:</p>
-            <QuantityInput
-              type="number"
-              min="1"
-              value={cartPopup.quantity}
-              onChange={handleQuantityChange}
-            />
-            <p>Total Price: <strong>R{parseInt(cartPopup.item.price.slice(1)) * cartPopup.quantity}</strong></p>
-            <AddToCartButton onClick={handleAddToCart}>Add</AddToCartButton>
-            
+            <CloseButton onClick={closeCartPopup}>X</CloseButton>
+            <h3>{cartPopup.item.name}</h3>
+            <ModalBody>
+              <EquipmentImage src={cartPopup.item.image} alt={cartPopup.item.name} />
+              <ModalDescription>
+                <p>{cartPopup.item.description}</p>
+                <p>Price: <strong>{cartPopup.item.price}</strong></p>
+                <p>Quantity:</p>
+                <QuantityInput
+                  type="number"
+                  min="1"
+                  value={cartPopup.quantity}
+                  onChange={handleQuantityChange}
+                />
+                <p>Total Price: <strong>R{parseInt(cartPopup.item.price.slice(1)) * cartPopup.quantity}</strong></p>
+                <AddToCartButton onClick={handleAddToCart}>Add to Cart</AddToCartButton>
+              </ModalDescription>
+            </ModalBody>
           </ModalContent>
         </ModalOverlay>
       )}
-    
-    <Footer /> {/* Footer component inside the main container */}
-     
+
+      <Footer />
     </>
   );
 };
