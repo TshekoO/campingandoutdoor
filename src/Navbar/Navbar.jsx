@@ -184,7 +184,7 @@ const CloseButton = styled.button`
     color: #888;
     font-size: 16px;
     cursor: pointer;
-
+   
     &:hover {
         color: #f0a500;
     }
@@ -277,7 +277,9 @@ const PayButton = styled.button`
     font-size: 16px;
     font-weight: bold;
     margin-top: 10px;
-    width: 100%;
+    width: 30%;
+    align-self: center;
+    transition: background 0.3s ease;
 
     &:hover {
         background: #d18e00;
