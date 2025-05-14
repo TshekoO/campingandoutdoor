@@ -153,9 +153,9 @@ const CartDropdown = styled.div`
     right: 0;
     background: white;
     color: black;
-    width: 400px; /* Smaller width */
-    max-height: 500px; /* Optional: prevents it from growing too tall */
-    overflow-y: auto;  /* Enables scrolling if content is too long */
+    width: 800px; /* Smaller width */
+    max-height: 500px; /* Prevents it from growing too tall */
+    overflow-y: auto;  /* Enables vertical scrolling */
     border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
