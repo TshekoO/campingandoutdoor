@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import Slider from 'react-slick'; // Import react-slick for the carousel
 import Footer from '../Footer/Footer'; // Ensure the Footer component is correctly imported
+import "slick-carousel/slick/slick.css"; // Import slick-carousel styles
+import "slick-carousel/slick/slick-theme.css"; // Import slick-carousel theme styles
 
 const HeroSection = styled.div`
   position: relative;
@@ -19,25 +22,36 @@ const HeroSection = styled.div`
   }
 `;
 
-const VideoBackground = styled.video`
+const HeroHeader = styled.div`
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 20%;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  pointer-events: none;
-  z-index: -1;
+  text-align: center;
+  z-index: 2;
+  color: white;
+
+  h1 {
+    font-size: 4rem;
+    font-family: 'Georgia', serif;
+    margin: 0;
+  }
+
+  h2 {
+    font-size: 2rem;
+    font-family: 'Arial', sans-serif;
+    margin: 0.5rem 0 0;
+  }
 `;
 
-const Overlay = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
+const CarouselWrapper = styled.div`
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
-  z-index: 0;
+
+  .slick-slide img {
+    width: 100%;
+    height: 70vh;
+    object-fit: cover;
+  }
 `;
 
 const DescriptionSection = styled.div`
@@ -65,14 +79,39 @@ const DescriptionSection = styled.div`
 `;
 
 const AboutUS = () => {
+  const carouselSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+  };
+
   return (
     <main>
       <HeroSection>
-        <VideoBackground autoPlay loop muted>
-          <source src="/film2.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </VideoBackground>
-        <Overlay />
+        <HeroHeader>
+          <h1>Welcome to Trailblazer Gear</h1>
+          <h2>Explore the Outdoors with Confidence</h2>
+        </HeroHeader>
+        <CarouselWrapper>
+          <Slider {...carouselSettings}>
+            <div>
+              <img src="/camps1.jpg" alt="Carousel Image 1" />
+            </div>
+            <div>
+              <img src="/camps.jpg" alt="Carousel Image 2" />
+            </div>
+            <div>
+              <img src="/camping.jpg" alt="Carousel Image 3" />
+            </div>
+            <div>
+              <img src="/tool.jpg" alt="Carousel Image 4" />
+            </div>
+          </Slider>
+        </CarouselWrapper>
       </HeroSection>
       <DescriptionSection>
         <h2>About Us</h2>
@@ -97,7 +136,6 @@ const AboutUS = () => {
           customers.
         </p>
         <img src="/camp1.jpg" alt="Additional About Us Image" />
-        <img src="/camp2.jpg" alt="About Us" />
         <p>
           Join us on our journey to explore the great outdoors and discover the
           beauty of nature. Together, we can make every adventure unforgettable.
