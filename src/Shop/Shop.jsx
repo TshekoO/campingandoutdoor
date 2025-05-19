@@ -29,19 +29,36 @@ const ShopContainer = styled.div`
 `;
 
 const Logo = styled.div`
+    display: flex;
+    justify-content: center;
     align-items: center;
-    top: 30px;
-    left: 200px;
     font-size: 50px;
+    position: relative;
+
+    @media (max-width: 768px) {
+        font-size: 30px; /* Adjust font size for smaller screens */
+        margin-top: 20px; /* Add spacing for smaller screens */
+    }
+
+    @media (max-width: 480px) {
+        font-size: 24px; /* Further reduce font size for very small screens */
+    }
 `;
 
 const Img = styled.img`
     align-items: center;
     width: 21%;
     height: 30%;
-    top: 200px;
-    left: 200px;
     border-radius: 12px;
+
+    @media (max-width: 768px) {
+        width: 40%; /* Adjust width for smaller screens */
+        height: auto; /* Maintain aspect ratio */
+    }
+
+    @media (max-width: 480px) {
+        width: 60%; /* Further adjust width for very small screens */
+    }
 `;
 
 const ShopButton = styled.button`
