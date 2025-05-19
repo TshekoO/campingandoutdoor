@@ -7,13 +7,6 @@ import styled from 'styled-components';
 const HeroSection = () => {
   return (
     <HeroContainer>
-      {/* <Navbar>
-        <NavItem to="/">Home</NavItem>
-        <NavItem to="./About/About">About Us</NavItem>
-        <NavItem to="/equipment">Equipment</NavItem>
-        <NavItem to="/contact">Contact</NavItem>
-        <CartIcon icon={faCartPlus} />
-      </Navbar> */}
       <Content>
         <Title>TrailBlazer Gear</Title>
         <Phrase>Get Ready for Your Next Adventure</Phrase>
@@ -46,79 +39,69 @@ const HeroContainer = styled.div`
     position: absolute;
     top: 0;
     left: 0;
-    width: 600px;
+    width: 100%;
     height: 100%;
     background: rgba(43, 41, 41, 0.5);
     z-index: 1;
   }
+
+  @media (max-width: 768px) {
+    height: auto;
+    padding: 20px;
+  }
 `;
-
-// const Navbar = styled.nav`
-//   display: flex;
-//   justify-content: flex-start;
-//   gap: 50px;
-//   align-items: center;
-//   background: rgba(0, 0, 0, 0.7);
-//   padding: 10px 10px;
-//   position: absolute;
-//   top: 0;
-//   width: 98%;
-//   z-index: 1;
-// `;
-
-// const NavItem = styled(Link)`
-//   color: white;
-//   text-decoration: none;
-//   font-size: 18px;
-//   font-weight: bold;
-//   position: relative ;
-
-//   &:hover {
-//     color: white;
-//   }
-
-//   &:hover::after {
-//     content: '';
-//     position: absolute;
-//     left: 0;
-//     bottom: -2px;
-//     width: 100%;
-//     height: 2px;
-//     background-color: #f0a500;
-//   }
-// `;
-
-// const CartIcon = styled(FontAwesomeIcon)`
-//   margin-left: 600px;
-//   color: white;
-//   font-size: 24px;
-//   cursor: pointer;
-
-//   &:hover {
-//     color: #f0a500;
-//   }
-// `;
 
 const Content = styled.div`
   z-index: 2;
   position: relative;
   max-width: 800px;
   width: 100%;
-  align-self: left;
+  align-self: center;
+
+  @media (max-width: 768px) {
+    max-width: 90%;
+  }
 `;
 
 const Title = styled.h1`
   font-size: 48px;
   margin-bottom: 20px;
+
+  @media (max-width: 768px) {
+    font-size: 36px;
+   padding-top: 0 20px;
+  20px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 28px;
+    padding-top: 0 10px;
+  }
 `;
 
 const Phrase = styled.p`
   font-size: 24px;
   margin-bottom: 20px;
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 16px;
+  }
 `;
 
 const Subtitle = styled.p`
   font-size: 18px;
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 14px;
+  }
 `;
 
 export default HeroSection;

@@ -1,13 +1,15 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartPlus, faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
+import { faCartPlus, faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
 import { useCart } from '../CartContext/CartContext';
 
 const Navbar = () => {
     const [showCart, setShowCart] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false); // State for hamburger menu
     const toggleCart = () => setShowCart(!showCart);
+    const toggleMenu = () => setMenuOpen(!menuOpen); // Toggle menu visibility
 
     const { cart, addToCart, removeFromCart } = useCart();
     const cartCount = cart.reduce((total, item) => total + (item.quantity || 1), 0);
@@ -32,11 +34,15 @@ const Navbar = () => {
 
     return (
         <NavbarContainer>
-            <NavItem to="/home">Home</NavItem>
-            <NavItem to="/equipment">Equipment</NavItem>
-            <NavItem to="/aboutus">About Us</NavItem>
-           
-            <NavItem to="/contact">Contact</NavItem>
+            <Hamburger onClick={toggleMenu} aria-label="Toggle menu">
+                <FontAwesomeIcon icon={menuOpen ? faTimes : faBars} />
+            </Hamburger>
+            <NavLinks menuOpen={menuOpen}>
+                <NavItem to="/home" onClick={() => setMenuOpen(false)}>Home</NavItem>
+                <NavItem to="/equipment" onClick={() => setMenuOpen(false)}>Equipment</NavItem>
+                <NavItem to="/aboutus" onClick={() => setMenuOpen(false)}>About Us</NavItem>
+                <NavItem to="/contact" onClick={() => setMenuOpen(false)}>Contact</NavItem>
+            </NavLinks>
             <CartIconContainer>
                 <CartIcon icon={faCartPlus} onClick={toggleCart} aria-label="Toggle cart" />
                 {cartCount > 0 && <CartCount>{cartCount}</CartCount>}
@@ -87,15 +93,46 @@ const Navbar = () => {
 
 const NavbarContainer = styled.nav`
     display: flex;
-    justify-content: flex-start;
-    gap: 50px;
+    justify-content: space-between;
     align-items: center;
     background: rgba(0, 0, 0, 0.99);
-    padding: 10px 10px;
+    padding: 10px 20px;
     position: absolute;
     top: 0;
     width: 100%;
     z-index: 100;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 89%;
+    }
+`;
+
+const Hamburger = styled.button`
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    display: none;
+
+    @media (max-width: 768px) {
+        display: block;
+    }
+`;
+
+const NavLinks = styled.div`
+    display: flex;
+    gap: 20px;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        display: ${({ menuOpen }) => (menuOpen ? 'flex' : 'none')};
+        width: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        padding: 10px;
+    }
 `;
 
 const NavItem = styled(NavLink)`
@@ -103,26 +140,23 @@ const NavItem = styled(NavLink)`
     text-decoration: none;
     font-size: 18px;
     font-weight: bold;
-    position: relative;
 
     &:hover {
-        color: white;
+        color: #f0a500;
     }
 
-    &:hover::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: -2px;
-        width: 100%;
-        height: 2px;
-        background-color: #f0a500;
+    @media (max-width: 768px) {
+        font-size: 16px;
+        padding: 10px 0;
     }
 `;
 
 const CartIconContainer = styled.div`
-    margin-left: 600px;
     position: relative;
+
+    @media (max-width: 768px) {
+        margin-left: 0; /* Remove large margin for smaller screens */
+    }
 `;
 
 const CartIcon = styled(FontAwesomeIcon)`
@@ -153,14 +187,21 @@ const CartDropdown = styled.div`
     right: 0;
     background: white;
     color: black;
-    width: 800px; /* Smaller width */
-    max-height: 500px; /* Prevents it from growing too tall */
-    overflow-y: auto;  /* Enables vertical scrolling */
+    width: 90%; /* Adjust width for smaller screens */
+    max-height: 500px;
+    overflow-y: auto;
     border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 200;
     padding: 10px;
+
+    @media (max-width: 768px) {
+        width: 100%; /* Full width for smaller screens */
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+    }
 `;
 
 
@@ -283,6 +324,10 @@ const PayButton = styled.button`
 
     &:hover {
         background: #d18e00;
+    }
+
+    @media (max-width: 768px) {
+        width: 100%; /* Full width for smaller screens */
     }
 `;
 
