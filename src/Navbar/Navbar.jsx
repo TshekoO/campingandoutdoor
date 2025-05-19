@@ -34,15 +34,6 @@ const Navbar = () => {
 
     return (
         <NavbarContainer>
-            <Hamburger onClick={toggleMenu} aria-label="Toggle menu">
-                <FontAwesomeIcon icon={menuOpen ? faTimes : faBars} />
-            </Hamburger>
-            <NavLinks menuOpen={menuOpen}>
-                <NavItem to="/home" onClick={() => setMenuOpen(false)}>Home</NavItem>
-                <NavItem to="/equipment" onClick={() => setMenuOpen(false)}>Equipment</NavItem>
-                <NavItem to="/aboutus" onClick={() => setMenuOpen(false)}>About Us</NavItem>
-                <NavItem to="/contact" onClick={() => setMenuOpen(false)}>Contact</NavItem>
-            </NavLinks>
             <CartIconContainer>
                 <CartIcon icon={faCartPlus} onClick={toggleCart} aria-label="Toggle cart" />
                 {cartCount > 0 && <CartCount>{cartCount}</CartCount>}
@@ -87,13 +78,22 @@ const Navbar = () => {
                     </CartDropdown>
                 )}
             </CartIconContainer>
+            <Hamburger onClick={toggleMenu} aria-label="Toggle menu">
+                <FontAwesomeIcon icon={menuOpen ? faTimes : faBars} />
+            </Hamburger>
+            <NavLinks menuOpen={menuOpen}>
+                <NavItem to="/home" onClick={() => setMenuOpen(false)}>Home</NavItem>
+                <NavItem to="/equipment" onClick={() => setMenuOpen(false)}>Equipment</NavItem>
+                <NavItem to="/aboutus" onClick={() => setMenuOpen(false)}>About Us</NavItem>
+                <NavItem to="/contact" onClick={() => setMenuOpen(false)}>Contact</NavItem>
+            </NavLinks>
         </NavbarContainer>
     );
 };
 
 const NavbarContainer = styled.nav`
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     background: rgba(0, 0, 0, 0.99);
     padding: 10px 20px;
@@ -103,9 +103,9 @@ const NavbarContainer = styled.nav`
     z-index: 100;
 
     @media (max-width: 768px) {
-        flex-direction: row-reverse; // Change direction so cart is left
+        flex-direction: row;
         align-items: flex-start;
-        width: 90%;
+        width: 100%;
     }
 `;
 
@@ -153,9 +153,10 @@ const NavItem = styled(NavLink)`
 
 const CartIconContainer = styled.div`
     position: relative;
+    margin-right: 20px;
 
     @media (max-width: 768px) {
-        margin-right: auto; // Pushes cart icon to the left
+        margin-right: 10px;
     }
 `;
 
@@ -163,7 +164,8 @@ const CartIcon = styled(FontAwesomeIcon)`
     color: white;
     font-size: 24px;
     cursor: pointer;
-
+    
+    margin-left: 20px;
     &:hover {
         color: #f0a500;
     }
