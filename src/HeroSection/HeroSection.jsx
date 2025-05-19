@@ -69,13 +69,13 @@ const Title = styled.h1`
 
   @media (max-width: 768px) {
     font-size: 36px;
-   top: 0 30px;
+   top: 30px;
   
   }
 
   @media (max-width: 480px) {
     font-size: 28px;
-    top: 0 20px;
+    top: 20px;
   }
 `;
 
