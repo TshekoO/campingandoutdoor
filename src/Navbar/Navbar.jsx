@@ -103,9 +103,9 @@ const NavbarContainer = styled.nav`
     z-index: 100;
 
     @media (max-width: 768px) {
-        flex-direction: column;
+        flex-direction: row-reverse; // Change direction so cart is left
         align-items: flex-start;
-        width: 89%;
+        width: 90%;
     }
 `;
 
@@ -155,7 +155,7 @@ const CartIconContainer = styled.div`
     position: relative;
 
     @media (max-width: 768px) {
-        margin-left: 0; /* Remove large margin for smaller screens */
+        margin-right: auto; // Pushes cart icon to the left
     }
 `;
 
