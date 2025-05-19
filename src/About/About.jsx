@@ -29,6 +29,13 @@ const AboutContainer = styled.div`
     color: white;
     width: 100vw;
     height: 100vh;
+    overflow: hidden;
+
+    @media (max-width: 900px) {
+        height: auto;
+        min-height: 100vh;
+        padding-bottom: 2rem;
+    }
 `;
 
 const Header = styled.h1`
@@ -36,6 +43,14 @@ const Header = styled.h1`
     top: 20px;
     left: 500px;
     font-size: 2.5em;
+
+    @media (max-width: 900px) {
+        position: static;
+        text-align: center;
+        font-size: 2em;
+        margin-top: 1rem;
+        left: 0;
+    }
 `;
 
 const Description = styled.p`
@@ -45,6 +60,14 @@ const Description = styled.p`
     width: 70%;
     font-size: 1.2em;
     line-height: 1.5;
+
+    @media (max-width: 900px) {
+        position: static;
+        width: 90%;
+        margin: 1.5rem auto 0 auto;
+        font-size: 1em;
+        padding: 0 1rem;
+    }
 `;
 
 const Image = styled.img`
@@ -53,6 +76,18 @@ const Image = styled.img`
     height: 100%;
     top: 0;
     left: 880px;
+
+    @media (max-width: 1200px) {
+        left: 65vw;
+        width: 30vw;
+    }
+    @media (max-width: 900px) {
+        position: static;
+        display: block;
+        width: 90vw;
+        height: auto;
+        margin: 2rem auto 0 auto;
+    }
 `;
 
 const Img = styled.img`
@@ -62,6 +97,19 @@ const Img = styled.img`
     top: 150px;
     left: 800px;
     border: 3px solid black;
+
+    @media (max-width: 1200px) {
+        left: 60vw;
+        width: 20vw;
+        top: 120px;
+    }
+    @media (max-width: 900px) {
+        position: static;
+        display: block;
+        width: 70vw;
+        height: auto;
+        margin: 1.5rem auto 0 auto;
+    }
 `;
 
 export default About;
