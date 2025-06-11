@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartPlus, faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faCartPlus, faBars, faTimes, faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
 import { useCart } from '../CartContext/CartContext';
 
@@ -34,6 +34,15 @@ const Navbar = () => {
 
     return (
         <NavbarContainer>
+            <Hamburger onClick={toggleMenu} aria-label="Toggle menu">
+                <FontAwesomeIcon icon={menuOpen ? faTimes : faBars} />
+            </Hamburger>
+            <NavLinks menuOpen={menuOpen}>
+                <NavItem to="/home" onClick={() => setMenuOpen(false)}>Home</NavItem>
+                <NavItem to="/equipment" onClick={() => setMenuOpen(false)}>Equipment</NavItem>
+                <NavItem to="/aboutus" onClick={() => setMenuOpen(false)}>About Us</NavItem>
+                <NavItem to="/contact" onClick={() => setMenuOpen(false)}>Contact</NavItem>
+            </NavLinks>
             <CartIconContainer>
                 <CartIcon icon={faCartPlus} onClick={toggleCart} aria-label="Toggle cart" />
                 {cartCount > 0 && <CartCount>{cartCount}</CartCount>}
@@ -78,28 +87,20 @@ const Navbar = () => {
                     </CartDropdown>
                 )}
             </CartIconContainer>
-            <Hamburger onClick={toggleMenu} aria-label="Toggle menu">
-                <FontAwesomeIcon icon={menuOpen ? faTimes : faBars} />
-            </Hamburger>
-            <NavLinks menuOpen={menuOpen}>
-                <NavItem to="/home" onClick={() => setMenuOpen(false)}>Home</NavItem>
-                <NavItem to="/equipment" onClick={() => setMenuOpen(false)}>Equipment</NavItem>
-                <NavItem to="/aboutus" onClick={() => setMenuOpen(false)}>About Us</NavItem>
-                <NavItem to="/contact" onClick={() => setMenuOpen(false)}>Contact</NavItem>
-            </NavLinks>
         </NavbarContainer>
     );
 };
 
 const NavbarContainer = styled.nav`
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between; // changed from flex-start
     align-items: center;
     background: rgba(0, 0, 0, 0.99);
     padding: 10px 20px;
     position: absolute;
     top: 0;
-    width: 100%;
+    width: 96%;
+    height: 70px;
     z-index: 100;
 
     @media (max-width: 768px) {
@@ -164,8 +165,8 @@ const CartIcon = styled(FontAwesomeIcon)`
     color: white;
     font-size: 24px;
     cursor: pointer;
+    margin-left: 40px; // Reduced from 100px to 40px
     
-    margin-left: 20px;
     &:hover {
         color: #f0a500;
     }
@@ -202,7 +203,7 @@ const CartDropdown = styled.div`
         width: 100%; /* Full width for smaller screens */
         left: 0;
         right: 0;
-        margin: 0 auto;
+        margin: 0
     }
 `;
 
