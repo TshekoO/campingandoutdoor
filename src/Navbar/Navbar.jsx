@@ -37,12 +37,16 @@ const Navbar = () => {
             <Hamburger onClick={toggleMenu} aria-label="Toggle menu">
                 <FontAwesomeIcon icon={menuOpen ? faTimes : faBars} />
             </Hamburger>
+            <Icon>
+            <Img src='/trailblazer-removebg-preview.png' alt='camping' />
+            </Icon>
             <NavLinks menuOpen={menuOpen}>
                 <NavItem to="/home" onClick={() => setMenuOpen(false)}>Home</NavItem>
                 <NavItem to="/equipment" onClick={() => setMenuOpen(false)}>Equipment</NavItem>
                 <NavItem to="/aboutus" onClick={() => setMenuOpen(false)}>About Us</NavItem>
                 <NavItem to="/contact" onClick={() => setMenuOpen(false)}>Contact</NavItem>
             </NavLinks>
+         
             <CartIconContainer>
                 <CartIcon icon={faCartPlus} onClick={toggleCart} aria-label="Toggle cart" />
                 {cartCount > 0 && <CartCount>{cartCount}</CartCount>}
@@ -95,7 +99,7 @@ const NavbarContainer = styled.nav`
     display: flex;
     justify-content: space-between; // changed from flex-start
     align-items: center;
-    background: rgba(0, 0, 0, 0.99);
+    background:rgb(54, 54, 54);;
     padding: 10px 20px;
     position: absolute;
     top: 0;
@@ -107,6 +111,40 @@ const NavbarContainer = styled.nav`
         flex-direction: row;
         align-items: flex-start;
         width: 100%;
+    }
+`;
+const Icon = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 100px;
+    position: relative;
+    font-color: white;
+    @media (max-width: 768px) {
+        font-size: 30px; /* Adjust font size for smaller screens */
+        margin-top: 20px; /* Add spacing for smaller screens */
+    }
+
+    @media (max-width: 480px) {
+        font-size: 24px; /* Further reduce font size for very small screens */
+    }
+`;
+
+const Img = styled.img`
+    align-items: center;
+    width: 76%;
+    height: 30%;
+    font-color: white;
+
+    border-radius: 12px;
+
+    @media (max-width: 768px) {
+        width: 40%; /* Adjust width for smaller screens */
+        height: auto; /* Maintain aspect ratio */
+    }
+
+    @media (max-width: 480px) {
+        width: 60%; /* Further adjust width for very small screens */
     }
 `;
 
@@ -130,7 +168,7 @@ const Hamburger = styled.button`
 const NavLinks = styled.div`
     display: flex;
     gap: 20px;
-
+    margin-left:60px;
     @media (max-width: 768px) {
         flex-direction: column;
         display: ${({ menuOpen }) => (menuOpen ? 'flex' : 'none')};
