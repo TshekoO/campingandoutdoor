@@ -121,6 +121,10 @@ const Hamburger = styled.button`
     @media (max-width: 768px) {
         display: block;
     }
+
+    @media (min-width: 1024px) {
+        font-size: 18px; // Adjust the font size as needed
+    }
 `;
 
 const NavLinks = styled.div`
@@ -134,12 +138,16 @@ const NavLinks = styled.div`
         background: rgba(0, 0, 0, 0.9);
         padding: 10px;
     }
+
+    @media (min-width: 1024px) {
+        font-size: 18px; // Adjust the font size as needed
+    }
 `;
 
 const NavItem = styled(NavLink)`
     color: white;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 25px;
     font-weight: bold;
 
     &:hover {
@@ -147,7 +155,7 @@ const NavItem = styled(NavLink)`
     }
 
     @media (max-width: 768px) {
-        font-size: 16px;
+        font-size: 20px;
         padding: 10px 0;
     }
 `;
@@ -163,7 +171,7 @@ const CartIconContainer = styled.div`
 
 const CartIcon = styled(FontAwesomeIcon)`
     color: white;
-    font-size: 24px;
+    font-size: 29px;
     cursor: pointer;
     margin-left: 40px; // Reduced from 100px to 40px
     
