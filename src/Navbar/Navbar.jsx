@@ -162,7 +162,7 @@ const NavItem = styled(NavLink)`
 
 const CartIconContainer = styled.div`
     position: relative;
-    margin-right: 20px;
+    margin-right: 100px;
 
     @media (max-width: 768px) {
         margin-right: 10px;
@@ -198,7 +198,7 @@ const CartDropdown = styled.div`
     right: 0;
     background: white;
     color: black;
-    width: 90%; /* Adjust width for smaller screens */
+    width: 600px; /* Adjust width for smaller screens */
     max-height: 500px;
     overflow-y: auto;
     border: 1px solid #ccc;
