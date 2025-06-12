@@ -313,7 +313,7 @@ const Text = styled.div`
   background-color: black;
 
   text-align: center;
-  padding: 60px 0;
+  padding: 80px 0;
 `;
 
 export default Equipment;
