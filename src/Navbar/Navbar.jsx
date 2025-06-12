@@ -167,7 +167,7 @@ const Hamburger = styled.button`
 
 const NavLinks = styled.div`
     display: flex;
-    gap: 20px;
+    gap: 25px;
     margin-left:60px;
     @media (max-width: 768px) {
         flex-direction: column;
