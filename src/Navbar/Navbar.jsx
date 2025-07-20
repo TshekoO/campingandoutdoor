@@ -99,7 +99,7 @@ const NavbarContainer = styled.nav`
     display: flex;
     justify-content: space-between; // changed from flex-start
     align-items: center;
-    background:rgb(54, 54, 54);;
+    background: #e6810fff;
     padding: 10px 20px;
     position: absolute;
     top: 0;
@@ -108,9 +108,8 @@ const NavbarContainer = styled.nav`
     z-index: 100;
 
     @media (max-width: 768px) {
-        flex-direction: row;
         align-items: flex-start;
-        width: 98%;
+        width: 95%;
     }
 `;
 const Icon = styled.div`
