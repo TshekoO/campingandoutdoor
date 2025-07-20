@@ -246,7 +246,7 @@ const CartDropdown = styled.div`
 
     @media (max-width: 768px) {
         width: 100%; /* Full width for smaller screens */
-        left: 0;
+       margin-left: 30px;
         right: 0;
         margin: 0
     }
