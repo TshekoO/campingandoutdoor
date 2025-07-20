@@ -121,8 +121,8 @@ const Icon = styled.div`
     position: relative;
     font-color: white;
     @media (max-width: 768px) {
-        font-size: 40px; /* Adjust font size for smaller screens */
-        margin-top: -5px; /* Add spacing for smaller screens */
+        font-size: 50px; /* Adjust font size for smaller screens */
+        margin-top: -10px; /* Add spacing for smaller screens */
     }
 
     @media (max-width: 480px) {
