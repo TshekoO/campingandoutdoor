@@ -122,7 +122,7 @@ const Icon = styled.div`
     font-color: white;
     @media (max-width: 768px) {
         font-size: 60px; /* Adjust font size for smaller screens */
-        margin-top: -15px; /* Add spacing for smaller screens */
+        margin-top: -20px; /* Add spacing for smaller screens */
     }
 
     @media (max-width: 480px) {
@@ -203,7 +203,7 @@ const CartIconContainer = styled.div`
     margin-right: 100px;
 
     @media (max-width: 768px) {
-        margin-right: 10px;
+        margin-right: 20px;
     }
 `;
 
