@@ -246,7 +246,7 @@ const CartDropdown = styled.div`
 
     @media (max-width: 768px) {
         width: calc(80vw - 40px); /* Full width minus padding */
-        right: -70px; /* Adjust positioning to center better */
+        right: -50px; /* Adjust positioning to center better */
         margin: 0;
     }
 `;
