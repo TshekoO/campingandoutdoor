@@ -110,7 +110,7 @@ const NavbarContainer = styled.nav`
     @media (max-width: 768px) {
         flex-direction: row;
         align-items: flex-start;
-        width: 100%;
+        width: 98%;
     }
 `;
 const Icon = styled.div`
