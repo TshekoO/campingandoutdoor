@@ -104,11 +104,7 @@ const Img = styled.img`
         top: 120px;
     }
     @media (max-width: 900px) {
-        position: static;
-        display: block;
-        width: 70vw;
-        height: auto;
-        margin: 1.5rem auto 0 auto;
+        display: none;
     }
 `;
 
