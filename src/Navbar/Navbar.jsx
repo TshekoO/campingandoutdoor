@@ -203,7 +203,7 @@ const CartIconContainer = styled.div`
     margin-right: 100px;
 
     @media (max-width: 768px) {
-        margin-right: 20px;
+        margin-right: 30px;
     }
 `;
 
