@@ -99,7 +99,7 @@ const NavbarContainer = styled.nav`
     display: flex;
     justify-content: space-between; // changed from flex-start
     align-items: center;
-    background: #e6810fff;
+    background: #2E7D32;
     padding: 10px 20px;
     position: absolute;
     top: 0;
